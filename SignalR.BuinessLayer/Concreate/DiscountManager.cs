@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace SignalR.BuinessLayer.Concreate
 {
-    public class DicsountManager : IDiscountService
+    public class DiscountManager : IDiscountService
     {
         private readonly IDiscountDal _discountDal;
-        public DicsountManager(IDiscountDal discountDal)
+        public DiscountManager(IDiscountDal discountDal)
         {
             _discountDal = discountDal; 
         }
