@@ -65,14 +65,14 @@ namespace SignalRApi.Controllers
             return Ok("basariliri bir sekilde eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteProduct(int id)
         {
             var value = _productservice.TGetByID(id);
             _productservice.TDelete(value);
             return Ok("basarili bir sekilde silindi");
         }
-        [HttpGet("GetProduct")]
+        [HttpGet("{id}")]
         public IActionResult GetProduct(int id)
         {
             var value = _productservice.TGetByID(id);
