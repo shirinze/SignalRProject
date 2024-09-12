@@ -44,6 +44,7 @@ namespace SignalRApi.Controllers
                 ImageURL = y.ImageURL,
                 ProductStatus = y.ProductStatus,
                 CategoryName = y.Category.CategoryName
+                
             });
             return Ok(value.ToList());
         }
@@ -57,7 +58,8 @@ namespace SignalRApi.Controllers
                 Description = createproductdto.Description,
                 Price = createproductdto.Price,
                 ImageURL = createproductdto.ImageURL,
-                ProductStatus = createproductdto.ProductStatus
+                ProductStatus = createproductdto.ProductStatus,
+                CategoryID=createproductdto.CategoryID
                
             });
 
@@ -88,7 +90,8 @@ namespace SignalRApi.Controllers
                 Description = updateproductdto.Description,
                 Price = updateproductdto.Price,
                 ImageURL = updateproductdto.ImageURL,
-                ProductStatus = updateproductdto.ProductStatus
+                ProductStatus = updateproductdto.ProductStatus,
+                CategoryID=updateproductdto.CategoryID
             });
             return Ok("basarili bir sekilde guncellendi");
         }
