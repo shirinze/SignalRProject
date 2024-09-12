@@ -37,7 +37,7 @@ namespace SignalRApi.Controllers
             return Ok("hakkimda kismi basarili bir sekilde eklendi");
         }
 
-        [HttpDelete]
+        [HttpDelete("{id}")]
         public IActionResult DeleteAbout(int id)
         {
             var value = _aboutservice.TGetByID(id);
@@ -57,7 +57,7 @@ namespace SignalRApi.Controllers
             _aboutservice.TUpdate(about);
             return Ok("hakimda kismi guncellemdi");
         }
-        [HttpGet("GetAbout")]
+        [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
         {
             var value = _aboutservice.TGetByID(id);
