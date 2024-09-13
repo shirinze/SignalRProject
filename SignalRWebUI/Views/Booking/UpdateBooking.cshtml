@@ -15,8 +15,9 @@
 							<div class="card-title">Rezervasyon Güncelle</div>
 						</div>
 						<div class="card-body">
+							<input type="hidden" asp-for="BookingID">
 							<div class="form-group">
-								<input type="hidden" asp-for="BookingID">
+								
 								<label for="Name">Ad Soyad</label>
 								<input type="text" class="form-control" asp-for="Name" id="Name">
 							</div>

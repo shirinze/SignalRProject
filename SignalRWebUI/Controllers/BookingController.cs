@@ -71,7 +71,7 @@ namespace SignalRWebUI.Controllers
 		{
 			var client = _httpclientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(updatebookingdto);
-			StringContent stringcontent = new StringContent(jsonData, Encoding.UTF8, "apllication/json");
+			StringContent stringcontent = new StringContent(jsonData, Encoding.UTF8, "application/json");
 			var responseMessage = await client.PutAsync("https://localhost:7006/api/Booking", stringcontent);
 			if (responseMessage.IsSuccessStatusCode)
 			{
