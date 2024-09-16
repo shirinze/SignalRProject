@@ -25,7 +25,24 @@ namespace SignalRApi.Controllers
             var values = _mapper.Map<List<ResultCategoryDto>>(_categoryservice.TGetListAll());
             return Ok(values);
         }
-        [HttpPost]
+
+        [HttpGet("CategoryCount")]
+        public IActionResult CategoryCount()
+        {
+            return Ok(_categoryservice.TCategoryCount());
+        }
+        [HttpGet("ActiveCategoryCount")]
+        public IActionResult ActiveCategoryCount()
+        {
+            return Ok(_categoryservice.TActiveCategoryCount());
+        }
+        [HttpGet("PassiveCategoryCount")]
+        public IActionResult PassiveCategoryCount()
+        {
+            return Ok(_categoryservice.TPassiveCategoryCount());
+        }
+
+		[HttpPost]
         public IActionResult CreateCategory(CreateCategoryDto createcategorydto)
         {
             _categoryservice.TAdd(new Category()

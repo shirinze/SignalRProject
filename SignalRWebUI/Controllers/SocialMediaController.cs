@@ -55,7 +55,7 @@ namespace SignalRWebUI.Controllers
 			return View();
 		}
 		[HttpGet]
-		public async Task<IActionResult> UpdateSocialMediae(int id)
+		public async Task<IActionResult> UpdateSocialMedia(int id)
 		{
 			var client = _httpClientFactory.CreateClient();
 			var responseMessage = await client.GetAsync($"https://localhost:7006/api/SocialMedia/{id}");
@@ -68,7 +68,7 @@ namespace SignalRWebUI.Controllers
 			return View();
 		}
 		[HttpPost]
-		public async Task<IActionResult> UpdateSocialMediae(UpdateSocialMediaDto updatesocialmediadto)
+		public async Task<IActionResult> UpdateSocialMedia(UpdateSocialMediaDto updatesocialmediadto)
 		{
 			var client = _httpClientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(updatesocialmediadto);

@@ -1,0 +1,4 @@
+﻿--CategoryCount
+--ProductCount
+--aktif kategory sayisi
+--pasif kategory sayisi
