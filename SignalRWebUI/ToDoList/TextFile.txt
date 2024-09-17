@@ -2,3 +2,19 @@
 --ProductCount
 --aktif kategory sayisi
 --pasif kategory sayisi
+
+--kategori adina gore urun sayisi1
+--kategori adina gore urun sayisi2
+
+--ortalama fiyat
+--en yuksek urunlu fiyat
+--en dusuk urunlu fiyat
+--ortalama hamburger fiyati
+
+--toplam siparis sayisi
+--aktif siparis sayisi
+--son siparis tutar
+--kasadaki tutar
+--bugunku kazanc
+--masa sayisi
+
