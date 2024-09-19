@@ -7,6 +7,7 @@ using SignalR.EntityLayer.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Markup;
@@ -60,6 +61,12 @@ namespace SignalR.DataAccessLayer.EntityFramework
 		{
             using var context = new SignalRContext();
             return context.Products.Average(x => x.Price);
+		}
+
+		public decimal ProductPriceByHmaburger()
+		{
+			using var context = new SignalRContext();
+			return context.Products.Where(x => x.CategoryID == (context.Categories.Where(y => y.CategoryName == "Hamburger").Select(z => z.CategoryID).FirstOrDefault())).Average(w => w.Price);
 		}
 	}
 }
