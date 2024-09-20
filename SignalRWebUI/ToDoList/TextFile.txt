@@ -17,4 +17,6 @@
 --kasadaki tutar
 --bugunku kazanc
 --masa sayisi
+-----------------------------------------------------------------------------------
 
+statistiklerin consumelari

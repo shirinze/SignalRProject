@@ -60,7 +60,7 @@ builder.Services.AddScoped<IMoneyCaseService, MoneyCaseManager>();
 builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
 
 builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
-builder.Services.AddScoped<EfMenuTableDal, EfMenuTableDal>();
+builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
 
 
 builder.Services.AddControllers();
