@@ -9,11 +9,17 @@ namespace SignalRApi.Hubs
 	{
 		private readonly ICategoryService _categoryService;
 		private readonly IProductService _productService;
+		private readonly IOrderService _orderService;
+		private readonly IMoneyCaseService _moneycaseService;
+		private readonly IMenuTableService _menutableService;
 
-		public SignalRHub(ICategoryService categoryService, IProductService productService)
+		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneycaseService, IMenuTableService menutableService)
 		{
 			_categoryService = categoryService;
 			_productService = productService;
+			_orderService = orderService;
+			_moneycaseService = moneycaseService;
+			_menutableService = menutableService;
 		}
 
 		public async Task SendStatistic()
@@ -29,7 +35,7 @@ namespace SignalRApi.Hubs
 
 			var values4 = _categoryService.TPassiveCategoryCount();
 			await Clients.All.SendAsync("ReceivePassiveCategoryCount", values4);
-
+			
 			var values5 = _productService.TProductCountByCategoryNameHamburger();
 			await Clients.All.SendAsync("ReceiveProductCountByCategoryNameHamburger", values5);
 
@@ -37,7 +43,7 @@ namespace SignalRApi.Hubs
 			await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", values6);
 
 			var values7 = _productService.TProductPriceAvg();
-			await Clients.All.SendAsync("ReceiveProductPriceAvg", values7);
+			await Clients.All.SendAsync("ReceiveProductPriceAvg", values7.ToString("0.00" + "₺"));
 
 			var values8 = _productService.TProductNameMaxPrice();
 			await Clients.All.SendAsync("ReceiveProductNameMaxPrice", values8);
@@ -46,7 +52,22 @@ namespace SignalRApi.Hubs
 			await Clients.All.SendAsync("ReceiveProductNameMinPrice", values9);
 
 			var values10 = _productService.TProductPriceByHmaburger();
-			await Clients.All.SendAsync("ReceiveProductPriceByHmaburger", values10);
+			await Clients.All.SendAsync("ReceiveProductPriceByHmaburger", values10.ToString("0.00" + "₺"));
+
+			var values11 = _orderService.TTotalOrderCount();
+			await Clients.All.SendAsync("ReceiveTotalOrderCount", values11);
+
+			var values12 = _orderService.TActiveOrderCount();
+			await Clients.All.SendAsync("ReceiveActiveOrderCount",values12);
+
+			var values13 = _orderService.TLastOrderPrice();
+			await Clients.All.SendAsync("ReceiveLastOrderPrice", values13.ToString("0.00" + "₺"));
+
+			var values14 = _moneycaseService.TTotalMoneyCaseAmount();
+			await Clients.All.SendAsync("ReceiveTotalMoneyCaseAmount", values14.ToString("0.00" + "₺"));
+
+			var values16 = _menutableService.TMenuTableCount();
+			await Clients.All.SendAsync("ReceiveMenuTableCount", values16);
 		}
 	
 	}
