@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-
+using SignalRWebUI.Dtos.ProductDtos;
 
 namespace SignalRWebUI.ViewComponents.DefaultSliderComponents
 {
@@ -13,9 +13,13 @@ namespace SignalRWebUI.ViewComponents.DefaultSliderComponents
             _httpclientFactory = httpclientFactory;
         }
 
-        public IViewComponentResult Invoke()
+        public async Task< IViewComponentResult> InvokeAsync()
         {
-            return View();
+            var client = _httpclientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("https://localhost:7006/api/Product");
+            var jsonData=await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultProductDto>>(jsonData);
+            return View(values);
         }
 
       
