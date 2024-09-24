@@ -62,6 +62,10 @@ builder.Services.AddScoped<IMoneyCaseDal, EfMoneyCaseDal>();
 builder.Services.AddScoped<IMenuTableService, MenuTableManager>();
 builder.Services.AddScoped<IMenuTableDal, EfMenuTableDal>();
 
+builder.Services.AddScoped<ISliderService, SliderManager>();
+builder.Services.AddScoped<ISliderDal, EfSlidarDal>();
+
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

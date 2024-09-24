@@ -14,6 +14,7 @@ namespace SignalRApi.Controllers
 		{
 			_menutableService = menutableService;
 		}
+	
 		[HttpGet("MenuTableCount")]
 		public IActionResult MenuTableCount()
 		{
