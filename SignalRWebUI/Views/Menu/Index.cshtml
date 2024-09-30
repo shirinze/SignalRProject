@@ -130,11 +130,12 @@
         function showproductid(value){
             var id=value;
             $.ajax({
-                type:'post',
-                data:{item:id},
+                type:'Post',
+                url:"/Menu/AddBasket/" + id,
+                data:{ProductID:id},
                 contentType:'json',
                 success:function(){
-                    swal("seçilen ürün id: " + id, "Seçiminizi yaptınız!", "success");
+                    swal("seçilen ürün id: " + id, "Seçtiğiniz Ürün Sepete Eklendi!", "success");
                 }
             });
 

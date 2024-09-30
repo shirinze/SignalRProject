@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using SignalR.BuinessLayer.Abstract;
 using SignalR.DataAccessLayer.Concreate;
+using SignalR.DtoLayer.BasketDtos;
 using SignalR.EntityLayer.Entities;
 using SignalRApi.Models;
 
@@ -40,6 +41,27 @@ namespace SignalRApi.Controllers
 
             }).ToList();
             return Ok(values);
+        }
+        [HttpPost]
+        public IActionResult CreateBasket(CreateBasketDto createbasketdto)
+        {
+            using var context = new SignalRContext();
+            _basketService.TAdd(new Basket()
+            {
+                ProductID = createbasketdto.ProductID,
+                Count = 1,
+                MenuTableID = 5,
+                Price = context.Products.Where(x => x.ProductID == createbasketdto.ProductID).Select(y => y.Price).FirstOrDefault(),
+                TotalPrice=0
+            }) ;
+
+
+            return Ok();
+        }
+        [HttpDelete]
+        public IActionResult DeleteBasket(int id)
+        {
+            
         }
     }
 }
