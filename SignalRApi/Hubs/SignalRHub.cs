@@ -13,18 +13,20 @@ namespace SignalRApi.Hubs
 		private readonly IMoneyCaseService _moneycaseService;
 		private readonly IMenuTableService _menutableService;
 		private readonly IBookingService _bookingService;
+		private readonly INotificationService _notificationService;
 
-		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneycaseService, IMenuTableService menutableService, IBookingService bookingService)
-        {
-            _categoryService = categoryService;
-            _productService = productService;
-            _orderService = orderService;
-            _moneycaseService = moneycaseService;
-            _menutableService = menutableService;
-            _bookingService = bookingService;
-        }
+		public SignalRHub(ICategoryService categoryService, IProductService productService, IOrderService orderService, IMoneyCaseService moneycaseService, IMenuTableService menutableService, IBookingService bookingService, INotificationService notificationService)
+		{
+			_categoryService = categoryService;
+			_productService = productService;
+			_orderService = orderService;
+			_moneycaseService = moneycaseService;
+			_menutableService = menutableService;
+			_bookingService = bookingService;
+			_notificationService = notificationService;
+		}
 
-        public async Task SendStatistic()
+		public async Task SendStatistic()
 		{
 			var values1 = _categoryService.TCategoryCount();
 			await Clients.All.SendAsync("RecieveCategoryCount", values1);
@@ -89,6 +91,15 @@ namespace SignalRApi.Hubs
 			var values=_bookingService.TGetListAll();
 			await Clients.All.SendAsync("ReceiveBookingList", values);
 		}
+		public async Task SendNotification()
+		{
+			var value = _notificationService.TNotificationCountByStatusFalse();
+			await Clients.All.SendAsync("ReceiveNotificationCountByFalse", value);
+
+			var value1 = _notificationService.TGetAllNotificationByFalse();
+			await Clients.All.SendAsync("ReceiveAllNotificationByFalse", value1);
+		}
+		
 	
 	}
 }
