@@ -46,6 +46,16 @@ namespace SignalR.BuinessLayer.Concreate
 			return _notificationDal.NotificationCountByStatusFalse();
 		}
 
+		public void TNotificationStatusChangetoFalse(int id)
+		{
+			_notificationDal.NotificationStatusChangetoFalse(id);
+		}
+
+		public void TNotificationStatusChangetoTrue(int id)
+		{
+			_notificationDal.NotificationStatusChangetoTrue(id);
+		}
+
 		public void TUpdate(Notification entity)
 		{
 			_notificationDal.Update(entity);
