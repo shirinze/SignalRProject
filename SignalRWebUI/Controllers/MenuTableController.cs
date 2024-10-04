@@ -81,6 +81,19 @@ namespace SignalRWebUI.Controllers
 			}
 			return View();
 		}
+
+		public async Task<IActionResult> MenuTableListByStatus()
+		{
+			var client = _httpclientFactory.CreateClient();
+			var responseMessage = await client.GetAsync("https://localhost:7006/api/MenuTable");
+			if (responseMessage.IsSuccessStatusCode)
+			{
+				var jsonData = await responseMessage.Content.ReadAsStringAsync();
+				var value = JsonConvert.DeserializeObject<List<ResultMenuTableDto>>(jsonData);
+				return View(value);
+			}
+			return View();
+		}
 	}
 	
 }
