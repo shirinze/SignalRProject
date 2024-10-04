@@ -73,7 +73,6 @@ namespace SignalRApi.Hubs
 			var values16 = _menutableService.TMenuTableCount();
 			await Clients.All.SendAsync("ReceiveMenuTableCount", values16);
 		}
-
 		public async Task SendProgress()
 		{
 			var value = _moneycaseService.TTotalMoneyCaseAmount();
@@ -85,7 +84,6 @@ namespace SignalRApi.Hubs
 			var value2 = _menutableService.TMenuTableCount();
 			await Clients.All.SendAsync("ReceiveMenuTableCount", value2);
 		}
-
 		public async Task GetBookingList()
 		{
 			var values=_bookingService.TGetListAll();
@@ -98,6 +96,12 @@ namespace SignalRApi.Hubs
 
 			var value1 = _notificationService.TGetAllNotificationByFalse();
 			await Clients.All.SendAsync("ReceiveAllNotificationByFalse", value1);
+		}
+
+		public async Task GetMenuTable()
+		{
+			var value = _menutableService.TGetListAll();
+			await Clients.All.SendAsync("ReceiveMenuTableStatus", value);
 		}
 		
 	
