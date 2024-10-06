@@ -28,6 +28,7 @@ namespace SignalRApi.Controllers
             Booking booking = new Booking()
             { 
                 Name=createbookingdto.Name,
+                Description=createbookingdto.Description,
                 Phone=createbookingdto.Phone,
                 Mail=createbookingdto.Mail,
                 PersonCount=createbookingdto.PersonCount,
@@ -35,7 +36,7 @@ namespace SignalRApi.Controllers
             };
 
             _bookingservice.TAdd(booking);
-            return Ok("rezervasyon basarili bir sekilde eklendi");
+            return Ok("rezervasyon başarili bir şekilde eklendi");
 
 
         }
@@ -44,7 +45,7 @@ namespace SignalRApi.Controllers
         {
             var value = _bookingservice.TGetByID(id);
             _bookingservice.TDelete(value);
-            return Ok("rezervasyon basarili bir sekilde silindi");
+            return Ok("rezervasyon başarili bir şekilde silindi");
         }
 
         [HttpPut]
@@ -54,6 +55,7 @@ namespace SignalRApi.Controllers
             {
                 BookingID=updatebookingdto.BookingID,
                 Name=updatebookingdto.Name,
+                Description=updatebookingdto.Description,
                 Phone=updatebookingdto.Phone,
                 Mail=updatebookingdto.Mail,
                 PersonCount=updatebookingdto.PersonCount,
@@ -61,7 +63,7 @@ namespace SignalRApi.Controllers
             };
 
             _bookingservice.TUpdate(booking);
-            return Ok("rezervasyon basarili bir sekilde guncellendi");
+            return Ok("rezervasyon başarili bir şekilde güncellendi");
         }
 
         [HttpGet("{id}")]
@@ -71,5 +73,18 @@ namespace SignalRApi.Controllers
             var value = _bookingservice.TGetByID(id);
             return Ok(value);
         }
-    }
+        [HttpGet("BookingStatusApprove/{id}")]
+        public IActionResult BookingStatusApprove(int id)
+        {
+            _bookingservice.TBookingStatusApprove(id);
+            return Ok("rezervasyon açıklaması değiştirildi");
+        }
+		[HttpGet("BookingStatusCancel/{id}")]
+		public IActionResult BookingStatusCancel(int id)
+		{
+			_bookingservice.TBookingStatusCancel(id);
+			return Ok("rezervasyon açıklaması değiştirildi");
+		}
+
+	}
 }

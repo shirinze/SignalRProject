@@ -14,6 +14,7 @@ namespace SignalRWebUI.Controllers
         }
         public async Task<IActionResult> Index()
 		{
+			
 			var client = _httpclientFactory.CreateClient();
 			var responseMassage = await client.GetAsync("https://localhost:7006/api/Booking");
 			if (responseMassage.IsSuccessStatusCode)
@@ -32,6 +33,7 @@ namespace SignalRWebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> CreateBooking(CreateBookingDto createbookingdto)
 		{
+			createbookingdto.Description = "Rezervasyon Alındı";
 			var client = _httpclientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(createbookingdto);
 			StringContent stringcontent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -55,6 +57,8 @@ namespace SignalRWebUI.Controllers
 		[HttpGet]
 		public async Task<IActionResult> UpdateBooking(int id)
 		{
+		
+			
 			var client = _httpclientFactory.CreateClient();
 			var responseMessage = await client.GetAsync($"https://localhost:7006/api/Booking/{id}");
 			if (responseMessage.IsSuccessStatusCode)
@@ -69,6 +73,7 @@ namespace SignalRWebUI.Controllers
 		[HttpPost]
 		public async Task<IActionResult> UpdateBooking(UpdateBookingDto updatebookingdto)
 		{
+			updatebookingdto.Description = "Rezervasyon Alındı";
 			var client = _httpclientFactory.CreateClient();
 			var jsonData = JsonConvert.SerializeObject(updatebookingdto);
 			StringContent stringcontent = new StringContent(jsonData, Encoding.UTF8, "application/json");
@@ -78,6 +83,19 @@ namespace SignalRWebUI.Controllers
 				return RedirectToAction("Index");
 			}
 			return View();
+		}
+		public async Task<IActionResult> BookingStatusApprove(int id)
+		{
+			var client = _httpclientFactory.CreateClient();
+			await client.GetAsync($"https://localhost:7006/api/Booking/BookingStatusApprove/{id}");
+			return RedirectToAction("Index");
+		}
+
+		public async Task<IActionResult> BookingStatusCancel(int id)
+		{
+			var client = _httpclientFactory.CreateClient();
+			await client.GetAsync($"https://localhost:7006/api/Booking/BookingStatusCancel/{id}");
+			return RedirectToAction("Index");
 		}
 	}
 }

@@ -34,18 +34,22 @@
 					<th scope="col">Rezervasyon Durumu</th>
 					<th scope="col">Sil</th>
 				    <th scope="col">Güncelle</th>
+				    <th scope="col">Onayla</th>
+				    <th scope="col">Iptal Et</th>
 					</tr>
 					</thead>
 					<tbody>`
 					$.each(values,(index,item)=>{
 						tablehtml+=`<tr>
-						<td>${item.bookingID}</td>
+						<th>${index+1}</th>
 						<td>${item.name}</td>
 						<td>${item.phone}</td>
 						<td>${item.personCount}</td>
-						<td>${"Rezervasyon alındı"}</td>
+						<td>${item.description}</td>
 						<td><a href="/Booking/DeleteBooking/${item.bookingID}" class="btn btn-outline-danger">Sil</a></td>
 						<td><a href="/Booking/UpdateBooking/${item.bookingID}" class="btn btn-outline-success">Güncelle</a></td>
+						<td><a href="/Booking/BookingStatusApprove/${item.bookingID}" class="btn btn-outline-info">Onayla</a></td>
+						<td><a href="/Booking/BookingStatusCancel/${item.bookingID}" class="btn btn-outline-dark">Iptal Et</a></td>
 						</tr>`
 
 					});
