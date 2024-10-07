@@ -8,6 +8,8 @@ using System.Threading.Tasks;
 namespace SignalR.BuinessLayer.Abstract
 {
     public interface IDiscountService:IGenericService<Discount>
-    {
-    }
+	{
+		void TChangeStatusToTrue(int id);
+		void TChangeStatusToFalse(int id);
+	}
 }

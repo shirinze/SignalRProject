@@ -34,7 +34,11 @@ namespace SignalRApi.Controllers
                 Location=createcontactdto.Location,
                 Phone=createcontactdto.Phone,
                 Mail=createcontactdto.Mail,
-                FooterDescription=createcontactdto.FooterDescription
+                FooterDescription=createcontactdto.FooterDescription,
+                FooterTıtle=createcontactdto.FooterTıtle,
+                OpenDays=createcontactdto.OpenDays,
+                OpenDaysDescription=createcontactdto.OpenDaysDescription,
+                OpenHours=createcontactdto.OpenHours
 
             });
             return Ok("basarili bir sekilde eklendi");
@@ -62,9 +66,13 @@ namespace SignalRApi.Controllers
                 Location=updatecontactdto.Location,
                 Phone=updatecontactdto.Phone,
                 Mail=updatecontactdto.Mail,
-                FooterDescription=updatecontactdto.FooterDescription
-            
-            });
+                FooterDescription=updatecontactdto.FooterDescription,
+				FooterTıtle = updatecontactdto.FooterTıtle,
+				OpenDays = updatecontactdto.OpenDays,
+				OpenDaysDescription = updatecontactdto.OpenDaysDescription,
+				OpenHours = updatecontactdto.OpenHours
+
+			});
             return Ok("basarili bir sekilde guncellendi");
         }
     }
