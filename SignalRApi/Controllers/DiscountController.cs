@@ -84,6 +84,12 @@ namespace SignalRApi.Controllers
 			_discountservice.TChangeStatusToFalse(id);
 			return Ok("ürün indirimi passif oldu");
 		}
+        [HttpGet("GetListByStatusTrue")]
+        public IActionResult GetListByStatusTrue()
+        {
+            
+            return Ok(_discountservice.TGetListByStatusTrue());
+        }
 
 	}
 }
