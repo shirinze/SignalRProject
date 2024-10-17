@@ -129,6 +129,23 @@ namespace SignalRApi.Controllers
             });
             return Ok("basarili bir sekilde guncellendi");
         }
+        [HttpGet("ProductPriceBySteakBurger")]
+        public IActionResult ProductPriceBySteakBurger()
+        {
+            var value = _productservice.TProductPriceBySteakBurger();
+            return Ok(value);
+        }
+        [HttpGet("TotalPriceByDrinkCategory")]
+        public IActionResult TotalPriceByDrinkCategory()
+        {
+            return Ok(_productservice.TTotalPriceByDrinkCategory());
+        }
+
+        [HttpGet("TotalPriceByDrinkSalad")]
+        public IActionResult TotalPriceByDrinkSalad()
+        {
+            return Ok(_productservice.TTotalPriceBySaladCategory());
+        }
     }
 }
 

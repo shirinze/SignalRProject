@@ -40,8 +40,7 @@ namespace SignalR.BuinessLayer.Concreate
         {
             return _productDal.GetProductsWithCategories();
         }
-
-		public int TProductCount()
+        public int TProductCount()
 		{
             return _productDal.ProductCount();
 		}
@@ -76,7 +75,22 @@ namespace SignalR.BuinessLayer.Concreate
             return _productDal.ProductPriceByHmaburger();
 		}
 
-		public void TUpdate(Product entity)
+        public decimal TProductPriceBySteakBurger()
+        {
+            return _productDal.ProductPriceBySteakBurger();
+        }
+
+        public decimal TTotalPriceByDrinkCategory()
+        {
+            return _productDal.TotalPriceByDrinkCategory();
+        }
+
+        public decimal TTotalPriceBySaladCategory()
+        {
+            return _productDal.TotalPriceBySaladCategory();
+        }
+
+        public void TUpdate(Product entity)
         {
             _productDal.Update(entity);
         }

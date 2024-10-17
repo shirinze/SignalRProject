@@ -83,7 +83,32 @@ namespace SignalRApi.Hubs
 
 			var value2 = _menutableService.TMenuTableCount();
 			await Clients.All.SendAsync("ReceiveMenuTableCount", value2);
-		}
+
+			var value3 = _productService.TProductPriceAvg();
+			await Clients.All.SendAsync("ReceiveProductPriceAvg", value3);
+
+			var value4 = _productService.TProductCountByCategoryNameDrink();
+			await Clients.All.SendAsync("ReceiveProductCountByCategoryNameDrink", value4);
+
+			var value5 = _productService.TProductPriceByHmaburger();
+			await Clients.All.SendAsync("ReceiveProductPriceByHmaburger", value5);
+
+			var value6 = _categoryService.TActiveCategoryCount();
+			await Clients.All.SendAsync("ReceiveActiveCategoryCount", value6);
+
+			var value7 = _categoryService.TPassiveCategoryCount();
+			await Clients.All.SendAsync("ReceivePassiveCategoryCount", value7);
+
+
+            var value8 = _productService.TTotalPriceByDrinkCategory();
+            await Clients.All.SendAsync("ReceiveTotalPriceByDrinkCategory", value8);
+
+
+            var value9 = _productService.TTotalPriceBySaladCategory();
+            await Clients.All.SendAsync("ReceiveTotalPriceBySaladCategory", value9);
+
+
+        }
 		public async Task GetBookingList()
 		{
 			var values=_bookingService.TGetListAll();
