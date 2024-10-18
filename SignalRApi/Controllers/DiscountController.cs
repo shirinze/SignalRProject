@@ -30,15 +30,9 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateDiscount(CreateDiscountDto creatediscountdto)
         {
-            _discountservice.TAdd(new Discount()
-            {
-              Title=creatediscountdto.Title,
-              Amount=creatediscountdto.Amount,
-              Description=creatediscountdto.Description,
-              ImageUrl=creatediscountdto.ImageUrl,
-              Status=false
-
-            });
+            creatediscountdto.Status = false;
+            var value = _mapper.Map<Discount>(creatediscountdto);
+            _discountservice.TAdd(value);
             return Ok("basarili bir sekilde eklendi");
         }
         [HttpDelete("{id}")]
@@ -52,22 +46,15 @@ namespace SignalRApi.Controllers
         public IActionResult GetDiscount(int id)
         {
             var value = _discountservice.TGetByID(id);
-            return Ok(value);
+            return Ok(_mapper.Map<GetDiscountDto>(value));
         }
 
         [HttpPut]
         public IActionResult UpdateDiscount(UpdateDiscountDto updatediscountdto)
         {
-            _discountservice.TUpdate(new Discount()
-            {
-                DiscountID = updatediscountdto.DiscountID,
-                Title = updatediscountdto.Title,
-                Amount = updatediscountdto.Amount,
-                Description = updatediscountdto.Description,
-                ImageUrl = updatediscountdto.ImageUrl,
-                Status=false
-
-            });
+            updatediscountdto.Status = false;
+            var value = _mapper.Map<Discount>(updatediscountdto);
+            _discountservice.TUpdate(value);
             return Ok("basarili bir sekilde guncellendi");
         }
         [HttpGet("ChangeStatusToTrue/{id}")]

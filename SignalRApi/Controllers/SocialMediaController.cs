@@ -28,13 +28,8 @@ namespace SignalRApi.Controllers
         [HttpPost]
         public IActionResult CreateSocialMedia(CreateSocialMediaDto createsocialmediadto)
         {
-            _socialmediaservice.TAdd(new SocialMedia()
-            {
-                Title = createsocialmediadto.Title,
-                Url = createsocialmediadto.Url,
-                Icon = createsocialmediadto.Icon
-
-            });
+            var value = _mapper.Map<SocialMedia>(createsocialmediadto);
+            _socialmediaservice.TAdd(value);
             return Ok("basarili bir sekilde eklendi");
         }
 
@@ -49,18 +44,13 @@ namespace SignalRApi.Controllers
         public IActionResult GetSocialMedia(int id)
         {
             var value = _socialmediaservice.TGetByID(id);
-            return Ok(value);
+            return Ok(_mapper.Map<GetSocialMediaDto>(value));
         }
         [HttpPut]
         public IActionResult UpdateSocialMedia(UpdateSocialMediaDto updatesocialmediadto)
         {
-            _socialmediaservice.TUpdate(new SocialMedia()
-            {
-                SocialMediaID=updatesocialmediadto.SocialMediaID,
-                Title = updatesocialmediadto.Title,
-                Url = updatesocialmediadto.Url,
-                Icon = updatesocialmediadto.Icon
-            });
+            var value = _mapper.Map<SocialMedia>(updatesocialmediadto);
+            _socialmediaservice.TUpdate(value);
             return Ok("basarili bir sekilde guncellendi");
         }
     }

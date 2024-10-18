@@ -45,13 +45,9 @@ namespace SignalRApi.Controllers
 		[HttpPost]
         public IActionResult CreateCategory(CreateCategoryDto createcategorydto)
         {
-            _categoryservice.TAdd(new Category()
-            {
-                CategoryName = createcategorydto.CategoryName,
-                CategoryStatus = true
-            });
-                
-           
+            createcategorydto.CategoryStatus = true;
+            var value = _mapper.Map<Category>(createcategorydto);
+            _categoryservice.TAdd(value);
             return Ok("basariliri bir sekilde eklendi");
         }
 
@@ -66,17 +62,13 @@ namespace SignalRApi.Controllers
         public IActionResult GetCategory(int id)
         {
             var value = _categoryservice.TGetByID(id);
-            return Ok(value);
+            return Ok(_mapper.Map<GetCategoryDto>(value));
         }
         [HttpPut]
         public IActionResult UpdateCategory(UpdateCategoryDto updatecategorydto)
         {
-            _categoryservice.TUpdate(new Category()
-            {
-                CategoryID = updatecategorydto.CategoryID,
-                CategoryName = updatecategorydto.CategoryName,
-                CategoryStatus = updatecategorydto.CategoryStatus
-            });
+            var value = _mapper.Map<Category>(updatecategorydto);
+            _categoryservice.TUpdate(value);
             return Ok("basarili bir sekilde guncellendi");
         }
     }
