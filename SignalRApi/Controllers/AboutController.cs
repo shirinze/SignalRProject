@@ -50,15 +50,15 @@ namespace SignalRApi.Controllers
         [HttpPut]
         public IActionResult UpdateAbout(UpdateAboutDto updateaboutdto)
         {
-            About about = new About
-            {
-                AboutID = updateaboutdto.AboutID,
-                ImageUrl = updateaboutdto.ImageUrl,
-                Title = updateaboutdto.Title,
-                Description = updateaboutdto.Description
-            };
-            _aboutservice.TUpdate(about);
-            return Ok("hakimda kismi guncellemdi");
+            //About about = new About
+            //{
+            //    AboutID = updateaboutdto.AboutID,
+            //    ImageUrl = updateaboutdto.ImageUrl,
+            //    Title = updateaboutdto.Title,
+            //    Description = updateaboutdto.Description
+            //};
+            //_aboutservice.TUpdate(about);
+            //return Ok("hakimda kismi guncellemdi");
         }
         [HttpGet("{id}")]
         public IActionResult GetAbout(int id)
