@@ -128,6 +128,12 @@ namespace SignalRApi.Controllers
         {
             return Ok(_productservice.TTotalPriceBySaladCategory());
         }
-    }
+        [HttpGet("GetLast9Product")]
+        public IActionResult GetLast9Product()
+        {
+            return Ok(_productservice.TGetLast9Product());
+        }
+
+	}
 }
 

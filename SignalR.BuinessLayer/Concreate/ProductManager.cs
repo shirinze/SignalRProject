@@ -31,7 +31,12 @@ namespace SignalR.BuinessLayer.Concreate
            return _productDal.GetByID(id);
         }
 
-        public List<Product> TGetListAll()
+		public List<Product> TGetLast9Product()
+		{
+           return _productDal.GetLast9Product();
+		}
+
+		public List<Product> TGetListAll()
         {
             return _productDal.GetListAll();
         }
