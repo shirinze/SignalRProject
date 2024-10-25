@@ -29,8 +29,6 @@ This project is a full-featured, real-time order management system developed wit
 ## SignalR WebUI
 ![img4](https://github.com/user-attachments/assets/b6e412ae-afba-49c7-949a-4ae8267cd6e0)
 ![img11](https://github.com/user-attachments/assets/ecee35ce-ecc3-421e-b68d-e6de08d47b10)
-![img5](https://github.com/user-attachments/assets/89a73fe7-2ed7-4711-b699-5cadca28c0bd)
-![img6](https://github.com/user-attachments/assets/af4381b8-d520-4f21-af9c-86f0bb75c9c2)
 ![img12](https://github.com/user-attachments/assets/598d43e5-abd1-43a6-b7b4-4c45c16c989d)
 ![img8](https://github.com/user-attachments/assets/0abe772b-badc-4044-90e2-9dc06c89cd0d)
 ![img7](https://github.com/user-attachments/assets/38a352a6-fe36-4b0e-b865-20fc7ef780c1)
@@ -48,3 +46,5 @@ This project is a full-featured, real-time order management system developed wit
 
 ![img3](https://github.com/user-attachments/assets/9ffa06fd-1593-47a7-8368-ef5e73039be7)
 ![img2](https://github.com/user-attachments/assets/cf9f8697-e1fc-448d-919b-3bd0f7be2fba)
+
+
